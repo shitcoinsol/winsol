@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="win-logo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>$WIN — Born to Win</title>
@@ -205,28 +206,27 @@
       100% { transform: scale(1.05); }
     }
     
-    .grain-overlay {
-      position: fixed;
-      inset: 0;
-      background: url('grain.jpg') center center / cover;
-      opacity: 0.07;
-      pointer-events: none;
-      z-index: 9998;
+    .fade-body {
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    .fade-body.loaded {
+      opacity: 1;
     }
     </style>
 
 
 
 </head>
-<div class="grain-overlay"></div>
-<body class="fade-in-body" onload="document.body.classList.add('loaded')">
+<body class="fade-body" class="fade-in-body" onload="document.body.classList.add('loaded')">
 <div class="site-wrapper">
 
   <header>
     <img src="win-logo.png" alt="WIN Logo" class="logo-image" />
     <p>$WIN is not just a token — it's a declaration.  
     In a world of chance, $WIN is for those born to conquer the odds.  
-    You don’t gamble to win. You hold $WIN because you are the win.</p>
+    You don’t gamble to win. You hold $WIN because you are the winner.</p>
   </header>
 
   <!-- Hero Section -->
@@ -291,7 +291,12 @@
   };
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
+
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
 </script>
+
 
 
 </body>
