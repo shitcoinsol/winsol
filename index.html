@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$WIN — Born to Win</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #1a1714 url('casino-background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Playfair Display', serif;
+      color: #f3e8d6;
+    }
+
+    .site-wrapper {
+      filter: sepia(0.12) contrast(0.92) saturate(0.85) brightness(0.98);
+      padding-bottom: 60px; /* space for sticky footer */
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .logo-image {
+      max-width: 320px;
+      width: 90%;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #e6dac7;
+    }
+
+    section {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .video-container {
+      position: relative;
+      width: 90%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.7), inset 0 0 80px rgba(0, 0, 0, 0.6);
+      background: #000;
+      cursor: pointer;
+    }
+
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.95) contrast(1.05);
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      color: #fff2cc;
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-container.playing .video-overlay {
+      opacity: 0;
+    }
+
+    .button-image {
+      width: 440px;
+      max-width: 95%;
+      margin-top: 24px;
+      transition: transform 0.2s ease;
+    }
+
+    .button-image:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .sticky-footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 12px 0;
+      background: rgba(10, 8, 6, 0.85);
+      color: #d6af60;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      text-align: center;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    .sticky-footer a {
+      color: #d6af60;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.2s ease;
+    }
+
+    .sticky-footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      header p {
+        font-size: 16px;
+      }
+      .button-image {
+        width: 300px;
+      }
+    }
+  
+    .philosophy {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 100px 20px;
+      text-align: center;
+    }
+    .philosophy .line {
+      opacity: 0;
+      transform: translateY(20px);
+      font-size: 24px;
+      font-family: 'Cinzel', serif;
+      color: #d6af60;
+      margin: 20px 0;
+      transition: all 1.4s ease;
+    }
+    .philosophy .line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in-body {
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+
+    .fade-in-body.loaded {
+      opacity: 1;
+    }
+
+    .before-click {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .fade-line {
+      opacity: 0;
+      transform: translateY(20px);
+      font-size: 24px;
+      font-family: 'Cinzel', serif;
+      color: #f0dfb6;
+      margin: 20px 0;
+      transition: all 1.5s ease;
+    }
+
+    .fade-line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-line.emphasis {
+      font-size: 28px;
+      font-weight: bold;
+      color: #d6af60;
+    }
+
+    .video-container {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.4s ease;
+    }
+
+    .video-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .button-image:hover {
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    </style>
+
+
+</head>
+<body class="fade-in-body" onload="document.body.classList.add('loaded')">
+<div class="site-wrapper">
+
+  <header>
+    <img src="win-logo.png" alt="WIN Logo" class="logo-image" />
+    <p>$WIN is not just a token — it's a declaration.  
+    In a world of chance, $WIN is for those born to conquer the odds.  
+    You don’t gamble to win. You hold $WIN because you are the winner.</p>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="video-container visible" id="video-block">
+      <video id="heroVideo" class="hero-video" muted>
+        <source src="wooks1.mp4" type="video/mp4" />
+      </video>
+      <div class="video-overlay">▶ Click to Watch</div>
+    </div>
+    <a href="https://x.com" target="_blank">
+      <img src="win버튼.png" alt="I'm Ready to Win" class="button-image" />
+    </a>
+  </section>
+
+  <!-- Victory Parade Section -->
+  <section id="parade">
+    <div class="video-container visible">
+      <video class="hero-video" autoplay muted playsinline loop>
+        <source src="wooks2.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+  <!-- The Philosophy Section -->
+  <section class="philosophy">
+    <p class="line">WIN is not a gamble.</p>
+    <p class="line">It’s the consequence of belief.</p>
+    <p class="line">You’re not here by accident.</p>
+  </section>
+
+
+</div>
+
+<!-- Sticky Footer -->
+<footer class="sticky-footer">
+  <a href="https://x.com" target="_blank">Community</a>
+  •
+  <a href="https://pump.fun" target="_blank">Buy</a>
+  •
+  <a href="https://dexscreener.com" target="_blank">Dexscreener</a>
+</footer>
+
+<script>
+  const video = document.getElementById('heroVideo');
+  const container = document.getElementById('video-block');
+  container.addEventListener('click', () => {
+    if (video.paused) {
+      video.muted = false;
+      video.play();
+      container.classList.add('playing');
+    }
+  });
+
+  // Scroll-triggered fade-in for philosophy text
+  const lines = document.querySelectorAll('.philosophy .line');
+  const revealOnScroll = () => {
+    const triggerY = window.innerHeight * 0.85;
+    lines.forEach(line => {
+      const top = line.getBoundingClientRect().top;
+      if (top < triggerY) line.classList.add('visible');
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+
+</body>
+</html>
