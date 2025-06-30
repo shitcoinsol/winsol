@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="win-logo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>$WIN — Born to Win</title>
@@ -205,21 +204,11 @@
       0% { transform: scale(1); }
       100% { transform: scale(1.05); }
     }
-    
-    .fade-body {
-      opacity: 0;
-      transition: opacity 1.2s ease;
-    }
-
-    .fade-body.loaded {
-      opacity: 1;
-    }
     </style>
 
 
-
 </head>
-<body class="fade-body" class="fade-in-body" onload="document.body.classList.add('loaded')">
+<body class="fade-in-body" onload="document.body.classList.add('loaded')">
 <div class="site-wrapper">
 
   <header>
@@ -232,12 +221,12 @@
   <!-- Hero Section -->
   <section id="hero">
     <div class="video-container visible" id="video-block">
-      <video id="heroVideo" class="hero-video" muted>
+      <video id="heroVideo" class="hero-video" muted poster="wooks1-thumb.jpg">
         <source src="wooks1.mp4" type="video/mp4" />
       </video>
       <div class="video-overlay">▶ Click to Watch</div>
     </div>
-    <a href="https://x.com" target="_blank">
+    <a href="https://x.com/borntowinsol" target="_blank">
       <img src="win버튼.png" alt="I'm Ready to Win" class="button-image" />
     </a>
   </section>
@@ -262,7 +251,7 @@
 
 <!-- Sticky Footer -->
 <footer class="sticky-footer">
-  <a href="https://x.com" target="_blank">Community</a>
+  <a href="https://x.com/borntowin" target="_blank">Community</a>
   •
   <a href="https://pump.fun" target="_blank">Buy</a>
   •
@@ -291,12 +280,7 @@
   };
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
-
-  window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
-  });
 </script>
-
 
 
 </body>
